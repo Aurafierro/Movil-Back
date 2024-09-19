@@ -91,8 +91,8 @@ public class taskController {
         existingTask.setAssignedTo(taskUpdate.getAssignedTo());
         existingTask.setStatus(taskUpdate.getStatus());
 
-        taskService.updateTaskStatus(existingTask); // Actualiza el estado antes de guardar
-        taskService.save(existingTask); // Este método ya maneja el envío de correos
+        taskService.updateTaskStatus(existingTask); 
+        taskService.save(existingTask);
         return new ResponseEntity<>("Guardado", HttpStatus.OK);
     }
 }

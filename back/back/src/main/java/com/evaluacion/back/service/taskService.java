@@ -54,7 +54,7 @@ public class taskService implements ITaskService {
 
         if (task.getDueDate().isBefore(today) && task.getStatus() != Status.finalizada) {
             task.setStatus(Status.vencida);
-            emailService.sendEmailNotification(task, "La tarea está vencida."); // Usando emailService
+            emailService.sendEmailNotification(task, "La tarea está vencida."); 
         } else if (task.getDueDate().isEqual(today) && task.getStatus() == Status.pendiente) {
             emailService.sendEmailNotification(task, "La tarea está vencida.");
         } else if (task.getDueDate().isBefore(today.plusDays(5)) && task.getStatus() == Status.pendiente) {

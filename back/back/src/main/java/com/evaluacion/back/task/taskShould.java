@@ -21,7 +21,7 @@ public class taskShould {
     private emailService email;
 	
 	
-	@Scheduled(cron = "0 0 8 * * ?") // A las 8 AM todos los días
+	@Scheduled(cron = "0 0 8 * * ?") 
     public void notificar() {
         List<task> listaTask = data.findAll();
 
