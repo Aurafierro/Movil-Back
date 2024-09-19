@@ -81,18 +81,17 @@ public class taskController {
 
     @PutMapping("/{id_task}")
     public ResponseEntity<Object> update(@PathVariable Integer id_task, @RequestBody task taskUpdate) {
-        var existingTask = taskService.findOne(id_task).orElse(null);
-        if (existingTask == null) {
+        var Task = taskService.findOne(id_task).orElse(null);
+        if (Task == null) {
             return new ResponseEntity<>("Error: tarea no encontrada", HttpStatus.BAD_REQUEST);
         }
 
-        existingTask.setTitle(taskUpdate.getTitle());
-        existingTask.setDueDate(taskUpdate.getDueDate());
-        existingTask.setAssignedTo(taskUpdate.getAssignedTo());
-        existingTask.setStatus(taskUpdate.getStatus());
-
-        taskService.updateTaskStatus(existingTask); 
-        taskService.save(existingTask);
+        Task.setTitle(taskUpdate.getTitle());
+        Task.setDueDate(taskUpdate.getDueDate());
+        Task.setAssignedTo(taskUpdate.getAssignedTo());
+        Task.setStatus(taskUpdate.getStatus());
+        taskService.updateTaskStatus(Task); 
+        taskService.save(Task);
         return new ResponseEntity<>("Guardado", HttpStatus.OK);
     }
 }
